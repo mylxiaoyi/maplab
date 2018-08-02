@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rovioli)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+
 find_package(catkin_simple REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
 
@@ -27,9 +29,26 @@ cs_add_library(${PROJECT_NAME}_lib
 # APP #
 #######
 cs_add_executable(rovioli
+  src/data-publisher-flow.cc
+  src/datasource-factory.cc
+  src/datasource-rosbag.cc
+  src/datasource-rostopic.cc
+  src/feature-tracking.cc
+  src/imu-camera-synchronizer.cc
+  src/localizer.cc
+  src/map-builder-flow.cc
+  src/rovio-factory.cc
+  src/rovio-flow.cc
+  src/rovioli-node.cc
+  src/synced-nframe-throttler.cc
+  src/vio-update-builder.cc
+
   app/rovioli-app.cc
 )
-target_link_libraries(rovioli ${PROJECT_NAME}_lib)
+#target_link_libraries(rovioli ${PROJECT_NAME}_lib)
+
+cs_add_executable(test_rovio_factory test/test-rovio-factory.cc src/rovio-factory.cc src/rovio-flow.cc src/rovioli-node.cc src/imu-camera-synchronizer.cc src/feature-tracking.cc src/map-builder-flow.cc src/vio-update-builder.cc src/synced-nframe-throttler.cc src/localizer.cc src/data-publisher-flow.cc src/datasource-factory.cc src/datasource-rosbag.cc src/datasource-rostopic.cc)
+#target_link_libraries(test_rovio_factory ${PROJECT_NAME}_lib)
 
 #########
 # SHARE #

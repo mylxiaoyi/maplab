@@ -11,5 +11,7 @@ if(APPLE)
   target_link_libraries(${PROJECT_NAME} -lgtest)
 endif()
 
+target_link_libraries(${PROJECT_NAME} -lgtest)
+
 cs_install()
 cs_export()

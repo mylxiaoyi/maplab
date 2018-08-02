@@ -46,7 +46,7 @@ DEFINE_bool(
 DECLARE_bool(map_builder_save_image_as_resources);
 
 int main(int argc, char** argv) {
-  google::InitGoogleLogging(argv[0]);
+  //google::InitGoogleLogging(argv[0]);
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InstallFailureSignalHandler();
   FLAGS_alsologtostderr = true;
